@@ -8,4 +8,17 @@
       </h1>
     </section>
   </aside>
+  <div class="span8">
+    <% if @user.campaigns.any? %>
+    <h3>Campaigns (<%= @user.campaigns.count %>)</h3>
+    <span><%= link_to 'Create New Campaign', new_campaign_path %></span>
+    <ol class="campaigns">
+      <%= render @campaigns %>
+    </ol>
+    <%= will_paginate @campaigns %>
+    <% else %>
+      <span><%= link_to 'Create a New Campaign', new_campaign_path %> </span><br>
+      <span> Want to create a holiday or end of year gift card campaign for our fabulous teachers? Start here. </span>
+    <% end %>
+  </div>
 </div>

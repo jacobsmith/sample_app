@@ -1,0 +1,8 @@
+<li>
+  <span class="title"><%= campaign.title %> </span>
+  
+  <span class="timestamp">
+    Created <%= time_ago_in_words(campaign.created_at) %> ago.
+  </span><br>
+<span> <%= link_to 'Show', campaign %> | <%= link_to 'Edit', edit_campaign_path(campaign) %> | <%= link_to 'Destroy', campaign, method: :delete, data: { confirm: 'Are you sure?' } %>  </span>
+</li>
