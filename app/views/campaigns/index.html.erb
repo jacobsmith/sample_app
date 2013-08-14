@@ -3,14 +3,9 @@
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Description</th>
+      <th>Name</th>
       <th>End date</th>
-      <th>User</th>
-      <th>Recipient</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Created by</th>
     </tr>
   </thead>
 
@@ -18,10 +13,8 @@
     <% @campaigns.each do |campaign| %>
       <tr>
         <td><%= link_to campaign.title, campaign %></td>
-        <td><%= campaign.description %></td>
         <td><%= campaign.end_date %></td>
         <td><%= campaign.user.name %></td>
-        <td><%= campaign.recipient_id %></td>
       </tr>
     <% end %>
   </tbody>

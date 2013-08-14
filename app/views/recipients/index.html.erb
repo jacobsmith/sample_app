@@ -1,0 +1,31 @@
+<h1>Your Giftcard Recipients</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Title</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @recipients.each do |recipient| %>
+      <tr>
+        <td><%= recipient.first_name %></td>
+        <td><%= recipient.last_name %></td>
+        <td><%= recipient.title %></td>
+        <td><%= recipient.user.name %></td>
+        <td><%= link_to 'Edit', edit_recipient_path(recipient) %></td>
+        <td><%= link_to 'Destroy', recipient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Recipient', new_recipient_path %>

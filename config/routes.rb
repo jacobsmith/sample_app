@@ -1,4 +1,6 @@
 SampleApp::Application.routes.draw do
+  resources :recipients
+
   resources :campaigns
 
   resources :users

@@ -6,11 +6,14 @@ class CampaignsController < ApplicationController
   # GET /campaigns.json
   def index
     @campaigns = Campaign.all
+
   end
 
   # GET /campaigns/1
   # GET /campaigns/1.json
   def show
+    @user = current_user
+    @recipients = @user.recipients.paginate(page: params[:page])
   end
 
   # GET /campaigns/new
@@ -42,14 +45,9 @@ class CampaignsController < ApplicationController
   # PATCH/PUT /campaigns/1
   # PATCH/PUT /campaigns/1.json
   def update
-    respond_to do |format|
-      if @campaign.update(campaign_params)
-        format.html { redirect_to @campaign, notice: 'Campaign was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @campaign.errors, status: :unprocessable_entity }
-      end
+    if @campaign.update(campaign_params)
+      flash[:success] = "#{@campaign.title} campaign updated."
+      redirect_to current_user
     end
   end
 
