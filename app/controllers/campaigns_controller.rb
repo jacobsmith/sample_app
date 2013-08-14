@@ -1,5 +1,6 @@
 class CampaignsController < ApplicationController
   before_action :set_campaign, only: [:show, :edit, :update, :destroy]
+  
 
   # GET /campaigns
   # GET /campaigns.json
@@ -25,6 +26,7 @@ class CampaignsController < ApplicationController
   # POST /campaigns.json
   def create
     @campaign = Campaign.new(campaign_params)
+    @campaign.user_id = current_user.id
 
     respond_to do |format|
       if @campaign.save
