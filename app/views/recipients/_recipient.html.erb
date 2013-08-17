@@ -1,4 +1,11 @@
-<div>
-  <span class="title"><%= recipient.first_name %> <%= recipient.last_name %></span>
-  <span class="timestamp"> <%= recipient.title %> </span>
-</div>
+<table>
+  <tr>
+    <td> <%= button_to 'Thanks', line_items_path(recipient_id: recipient), class: "btn-mini" %>
+    </td>
+    <td>
+      <body><%= recipient.first_name %> <%= recipient.last_name %>
+      </body><br>
+      <span class="timestamp"> <%= recipient.title %> </span>
+    </td>
+  </tr>
+</table>
