@@ -1,6 +1,7 @@
 class CampaignsController < ApplicationController
   before_action :set_campaign, only: [:show, :edit, :update, :destroy]
-  
+  include CurrentCart
+  before_action :set_cart
 
   # GET /campaigns
   # GET /campaigns.json
@@ -12,8 +13,13 @@ class CampaignsController < ApplicationController
   # GET /campaigns/1
   # GET /campaigns/1.json
   def show
-    @user = current_user
-    @recipients = @user.recipients.paginate(page: params[:page])
+    #@user = current_user
+    @campaign = Campaign.find(params[:id])
+    @recipients = Recipient.paginate(page: params[:page])
+    #@recipients = Recipient.find_by(recipient.user_id)
+    #find recipients when recipient_id = 
+    #recipient.user.id 
+    
   end
 
   # GET /campaigns/new

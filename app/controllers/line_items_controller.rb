@@ -28,10 +28,12 @@ class LineItemsController < ApplicationController
   def create
     recipient = Recipient.find(params[:recipient_id])
     @line_item = @cart.add_recipient(recipient.id)
+    #need to redirect back to the current campaign
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.cart }
+        format.html { redirect_to campaigns_url }
+        #format.js
         format.json { render action: 'show', status: :created, location: @line_item }
       else
         format.html { render action: 'new' }

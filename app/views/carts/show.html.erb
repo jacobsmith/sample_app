@@ -2,22 +2,4 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<h3> Your Cart </h3>
-<table class="table table-bordered table-condensed">
-  <% @cart.line_items.each do |item| %>
-    <tr>
-      <td><%= number_to_currency(item.quantity) %></td>
-      <td><%= item.recipient.first_name %> 
-          <%= item.recipient.last_name %>
-      </td>
-    </tr>
-  <% end %>
-
-  <tr>
-    <td><strong><%= (number_to_currency@cart.total_price) %>
-    </strong></td>
-    <td><strong>Total</strong></td>
-  </tr>
-</table>
-
-  <%= button_to 'Empty cart', @cart, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-small btn-large btn-primary" %>
+<%= render @cart %>

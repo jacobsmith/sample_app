@@ -1,5 +1,17 @@
 <p id="notice"><%= notice %></p>
+<div class="row">
+<aside class="span3">
+    <section>
+      <h1>
+       
+        <%= render @cart %>
+      </h1>
+   
+    </section>
+  </aside>
 
+
+<div class="span8">
 
 
 <div>
@@ -10,7 +22,7 @@
 </div>
 
 
-  <% if @user.recipients.any? %>
+  <% if @recipients.any? %>
     <p class="recipients">
       <%= render @recipients %>
     </p>
@@ -18,3 +30,5 @@
   <% else %>
     <p>Next step: add some <%= link_to 'recipients', new_recipient_path %> to your giftcard campaign!</p>
   <% end %>
+</div>
+</div>
