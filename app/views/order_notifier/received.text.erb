@@ -1,0 +1,10 @@
+Dear <%= @order.name %>
+
+Thank you for your order.
+You made the following contributions:
+
+<%= render @order.line_items -%>
+
+Best,
+
+ThankTheTeacher.com
