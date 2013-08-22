@@ -1,15 +1,51 @@
 <% provide(:title, 'Tour') %>
-<h1>Tour</h1>
-<p>
-This is where we will describe the problem, solution, and how to use this site. The story sort of goes like this...
-</p>
-<ul>
-  <li> Our teachers work hard for our kids. giftcards are a nice way to say thanks </li>
-  <li> The problem: many different parents want to say thanks to many different teachers</li>
-  <li> TTT helps a volunteer from your schools Parent Teacher Organization create a web page where parents may select how much they want to give and who they want to give to</li>
-  <li>then, we handle the transaction and sum up the donations from all the parents so that ordering the gift cards is easy</li>
-  <li>and its better than free when you order the cards from your schools SCRIP program. Your parent organization will get a portion of the total purchase</li>
-</ul>
-<p> Ready to <%=link_to "Sign up", signup_path %>? Or, if you have any questions, please <%=link_to "Contact me", about_path %>.
-</p>
+
+<div id="this-carousel-id" class="carousel slide"><!-- class of slide for animation -->
+
+
+  <div class="carousel-inner">
+    <div class="item active"><!-- class of active since it's the first item -->
+      <img src="http://placehold.it/1200x480" alt="" />
+      <div class="carousel-caption">
+        <p>Giftcards are a great way to say thank you to our teachers.</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="http://placehold.it/1200x480" alt="" />
+      <div class="carousel-caption">
+        <p>The problem is many different parents want to make a small donation to many different teachers' giftcard accounts. Parent Teacher Organization volunteers have to do a lot of coordinating and calculating and processing and ordering. Its a hassle.</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="http://placehold.it/1200x480" alt="" />
+      <div class="carousel-caption">
+        <p>ThankTheTeacher.com helps organizations create a web page where parents can make donations to their favorite teachers.</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="http://placehold.it/1200x480" alt="" />
+      <div class="carousel-caption">
+        <p>We safely and securely process the orders and then summarize the donations by teacher. Then, we help the to order the giftcards. </p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="http://placehold.it/1200x480" alt="" />
+      <div class="carousel-caption">
+        <p>There are no transaction fees and we donate 3% of all giftcard purchases back to your school's Parent Teacher Organization. </p>
+      </div>
+    </div>
+    <p class="text-center"> Ready to <%=link_to "Sign up", signup_path %>? Or, if you have any questions, please <%=link_to "Contact me", about_path %>.
+    </p>
+  </div><!-- /.carousel-inner -->
+  <!--  Next and Previous controls below
+        href values must reference the id for this carousel -->
+    <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
+    <ol class="carousel-indicators">
+    <li data-target="#this-carousel-id" data-slide-to="0" class="active"></li>
+    <li data-target="#this-carousel-id" data-slide-to="1"></li>
+    <li data-target="#this-carousel-id" data-slide-to="2"></li>
+    <li data-target="#this-carousel-id" data-slide-to="3"></li>
+  </ol>
+</div><!-- /.carousel -->
 

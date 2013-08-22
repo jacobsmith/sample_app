@@ -2,6 +2,7 @@
 <div class="row">
 <aside class="span3">
     <section>
+    <em>press refresh to see cart the update (AJAX bug)</em>
       <h1>
        
         <%= render @cart %>
@@ -26,7 +27,6 @@
     <p class="recipients">
       <%= render @recipients %>
     </p>
-    <%= will_paginate @recipients %>
   <% else %>
     <p>Next step: add some <%= link_to 'recipients', new_recipient_path %> to your giftcard campaign!</p>
   <% end %>
