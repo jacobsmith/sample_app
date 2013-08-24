@@ -9,6 +9,7 @@ class StaticPagesController < ApplicationController
   end
 
   def tour
+  	@campaign = Campaign.find(1)
   end
 
 end

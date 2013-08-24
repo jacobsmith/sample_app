@@ -1,12 +1,12 @@
 <% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
-<p class="text-center"><i>
-  Registration is for the parent volunteer running your school or classroom's giftcard campaign. <br>
-  Not sure how this works? take the <%= link_to "tour", tour_path %> and then decide if you want to sign up.
-</i></p>
-
 <div class="row">
-  <div class="span6 offset3">
+  <div class="span8 offset3">
+<h4>Sign up</h4>
+<p>
+  Registration is for the parent volunteer running your school or classroom's giftcard campaign. You do not need to register to donate to your teacher's Gift Card account.
+</p>
+
+
     <%= form_for(@user) do |f| %>
       <%= render 'fields', f: f %>
       <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
