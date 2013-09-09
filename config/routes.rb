@@ -5,7 +5,9 @@ SampleApp::Application.routes.draw do
 
   resources :carts
 
-  resources :recipients
+  resources :recipients do
+    get :who_bought, on: :member
+  end
 
   resources :campaigns
 

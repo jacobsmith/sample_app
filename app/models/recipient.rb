@@ -1,5 +1,6 @@
 class Recipient < ActiveRecord::Base
 	has_many   :line_items
+	has_many   :orders, through: :line_items
 	belongs_to :user
 	belongs_to :campaign
 	validates  :first_name, presence: true
