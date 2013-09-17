@@ -11,6 +11,7 @@ class RecipientsController < ApplicationController
   # GET /recipients/1
   # GET /recipients/1.json
   def show
+ 
   end
 
   # GET /recipients/new
@@ -56,6 +57,16 @@ class RecipientsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to recipients_url }
       format.json { head :no_content }
+    end
+  end
+
+  def who_bought
+    @recipient = Recipient.find(params[:id])
+    @latest_order = @recipient.orders.order(:updated_at).last 
+    if stale?(@latest_order)
+      respond_to do |format|
+        format.atom
+      end
     end
   end
 

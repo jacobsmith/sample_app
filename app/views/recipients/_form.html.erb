@@ -24,6 +24,10 @@
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
+  <div class ="field">
+    <%= f.label :campaign_id %><br>
+    <%= f.select :campaign_id, Campaign.all.collect {|c| [ c.title, c.id ] }, { :include_blank => true }%>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

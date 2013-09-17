@@ -11,13 +11,19 @@
     <section>
       <% if @user.recipients.any? %>
         <span>
-          <%= link_to 'Manage giftcard recipients', recipients_path %>
+          <%= link_to 'All Recipients', recipients_path %>
         </span>
       <% else %>
         <span>
           <%= link_to 'Add some giftcard recipients', new_recipient_path %>
         </span>
       <% end %>
+      <br>
+      <span>
+        
+        <%= link_to "Orders: ", orders_path %> 
+      </span>
+      
     </section>
   </aside>
 

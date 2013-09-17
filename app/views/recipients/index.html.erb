@@ -1,31 +1,42 @@
 <h1>Your Giftcard Recipients</h1>
 
+<section>
+<%= link_to 'New Recipient', new_recipient_path %>
+<br>
+<br>
+</section>
+
+<section>
 <table>
   <thead>
     <tr>
-      <th>First name</th>
-      <th>Last name</th>
+      <th>Manage</th>
+      <th>Name</th>
       <th>Title</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
+      <th>Total Contributions</th>
+      <th>Who Contributed</th>
+      <th>Order Giftcard</th>
     </tr>
   </thead>
 
   <tbody>
     <% @recipients.each do |recipient| %>
       <tr>
-        <td><%= recipient.first_name %></td>
-        <td><%= recipient.last_name %></td>
+        <td><%= link_to 'Edit', edit_recipient_path(recipient) %> | 
+        <%= link_to 'Delete', recipient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= recipient.first_name %> <%= recipient.last_name %> </td>
         <td><%= recipient.title %></td>
-        <td><%= recipient.user.name %></td>
-        <td><%= link_to 'Edit', edit_recipient_path(recipient) %></td>
-        <td><%= link_to 'Destroy', recipient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= recipient.line_items.sum('quantity') %></td>
+        <td>
+          <% recipient.line_items.each do |line_item| %>
+            <% if line_item.order %>
+              <%= line_item.order.name %>, 
+            <% end %>
+        <% end %>
+        </td>
+        <td>  <%= link_to "Order", '#', class: "btn btn-small btn-primary" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Recipient', new_recipient_path %>
+</section>

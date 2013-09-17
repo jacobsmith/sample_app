@@ -13,13 +13,9 @@ class CampaignsController < ApplicationController
   # GET /campaigns/1
   # GET /campaigns/1.json
   def show
-    #@user = current_user
+    @user = current_user
     @campaign = Campaign.find(params[:id])
-    @recipients = User.find(params[:id]).recipients.all
-    #@recipients = Recipient.find_by(recipient.user_id)
-    #find recipients when recipient_id = 
-    #recipient.user.id 
-    
+    @recipients = @campaign.recipients.all
   end
 
   # GET /campaigns/new
