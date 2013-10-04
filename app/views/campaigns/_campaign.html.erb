@@ -5,21 +5,23 @@
    <%= link_to 'Show', campaign %> | <%= link_to 'Edit', edit_campaign_path(campaign) %> | <%= link_to 'Delete', campaign, method: :delete, data: { confirm: 'Are you sure?' } %>  
   <br>
   <span class="timestamp">
-    Created <%= time_ago_in_words(campaign.created_at) %> ago.
-  <br>
+    Created <%= time_ago_in_words(campaign.created_at) %> ago. Ends on: <%= campaign.end_date %> 
   </span>
-<span class="body"> Ends on: <%= campaign.end_date %> <br>
+  <br>
+<span class="body"> 
+  
+
 <% total_contribution = 0 * 1.0%>
 
 <% campaign.recipients.each do | recipient | %>
   <% total_contribution += recipient.line_items.sum('quantity') %>
 <% end %>
-  Total Contributions: <%= link_to "$#{total_contribution.round(2)}" , orders_path %>
-       <br>
-<% total_commission = ((total_contribution * 1.05) - total_contribution).round(2) %>
-  Total Commission: $<%= total_commission  %>
+  Contributions: <%= number_to_currency(total_contribution) %> | 
+<% total_commission = number_to_currency(((total_contribution * 1.05) - total_contribution)) %>
+  Commission: <%= total_commission  %> <br>
+  <%= link_to "Manage Recipients", campaign_recipients_campaign_path(campaign) %> <br>
+  <%= link_to "Order Gift Cards", order_recipient_giftcards_campaign_path(campaign) %>
        
-       <br>
-       <%= link_to 'Order Giftcards', recipients_path %> 
+       
  </span>
 </li>

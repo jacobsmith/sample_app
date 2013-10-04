@@ -1,6 +1,17 @@
-<h1>Editing campaign</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @campaign %> |
-<%= link_to 'Back', campaigns_path %>
+<% provide(:title, @user.name) %>
+<p></p>
+<div class="row">
+  <aside class="span3">
+    <section>
+      <h4>
+        <%= link_to @user.name, current_user %>
+      </h4>
+      <h6>  <%= link_to "Edit Profile", edit_user_path(current_user) %> |  <%= link_to "Log Out", signout_path, method: "delete" %> </h6>
+      <hr>
+    </section>
+  </aside>
+ <div class="span8">
+  <h3>Editing campaign</h3>
+  <%= render 'form' %>
+ </div>
+</div>

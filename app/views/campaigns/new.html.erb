@@ -1,5 +1,19 @@
-<h1>New campaign</h1>
+<% provide(:title, @user.name) %>
+<p></p>
+<div class="row">
+  <aside class="span3">
+    <section>
+      <h4>
+        <%= link_to @user.name, current_user %>
+      </h4>
+      <h6>  <%= link_to "Edit Profile", edit_user_path(current_user) %> |  <%= link_to "Log Out", signout_path, method: "delete" %> </h6>
+      <hr>
+    </section>
+  </aside>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', campaigns_path %>
+  <div class="span8">
+    <h3>New campaign</h3>
+    <%= render 'form' %>
+    <%= link_to 'Back', campaigns_path %>
+  </div>
+</div>

@@ -9,7 +9,10 @@ SampleApp::Application.routes.draw do
     get :who_bought, on: :member
   end
 
-  resources :campaigns
+  resources :campaigns do
+    get :campaign_recipients, on: :member
+    get :order_recipient_giftcards, on: :member
+  end
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]

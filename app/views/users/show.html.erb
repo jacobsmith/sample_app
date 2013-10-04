@@ -1,28 +1,13 @@
 <% provide(:title, @user.name) %>
-  
+<p></p>
 <div class="row">
-  <aside class="span4">
+  <aside class="span3">
     <section>
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-    <section>
-      <% if @user.recipients.any? %>
-        <span>
-          <%= link_to 'All Recipients', recipients_path %>
-        </span>
-      <% else %>
-        <span>
-          <%= link_to 'Add some giftcard recipients', new_recipient_path %>
-        </span>
-      <% end %>
-      <br>
-      <span>
-        
-        <%= link_to "Orders: ", orders_path %> 
-      </span>
+      <h4>
+        <%= link_to @user.name, current_user %>
+      </h4>
+      <h6>  <%= link_to "Edit Profile", edit_user_path(current_user) %> |  <%= link_to "Log Out", signout_path, method: "delete" %> </h6>
+      <hr>
       
     </section>
   </aside>
@@ -36,7 +21,8 @@
         </ol>
         <%= will_paginate @campaigns %>
     <% else %>
-      <span><%= link_to 'Create a New Campaign', new_campaign_path %> </span><br>
+      <span><%= link_to 'Create a New Campaign', new_campaign_path %> 
+      </span><br>
       <span> Want to create a holiday or end of year gift card campaign for our fabulous teachers? Start here. </span>
     <% end %>
   </div>

@@ -4,8 +4,11 @@ class RecipientsController < ApplicationController
   # GET /recipients
   # GET /recipients.json
   def index
-    #@recipients = Recipient.all
-    @recipients = current_user.recipients.paginate(page: params[:page])
+    @recipients = Recipient.where("campaign_id = 1")
+    #@recipients = current_user.recipients.paginate(page: params[:page])
+    #@campaign = Campaign.find.all
+    #@campaign = Campaign.find(params[:id])
+    #@recipients = @campaign.recipients
   end
 
   # GET /recipients/1
@@ -17,6 +20,7 @@ class RecipientsController < ApplicationController
   # GET /recipients/new
   def new
     @recipient = Recipient.new
+    @user = current_user
   end
 
   # GET /recipients/1/edit
@@ -28,7 +32,9 @@ class RecipientsController < ApplicationController
   def create
     @recipient = Recipient.new(recipient_params)
     @recipient.user_id = current_user.id
+    @recipient.campaign_id = 1
     @recipient.price = 1.00
+
 
     respond_to do |format|
       if @recipient.save
@@ -78,6 +84,6 @@ class RecipientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipient_params
-      params.require(:recipient).permit(:first_name, :last_name, :title, :price, :user_id)
+      params.require(:recipient).permit(:first_name, :last_name, :title, :price, :user_id, :campaign_id)
     end
 end

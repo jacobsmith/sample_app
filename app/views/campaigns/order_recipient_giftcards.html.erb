@@ -1,0 +1,60 @@
+<% provide(:title, @user.name) %>
+<p></p>
+<div class="row">
+  <aside class="span3">
+    <section>
+      <h4>
+        <%= link_to @user.name, current_user %>
+      </h4>
+      <h6>  <%= link_to "Edit Profile", edit_user_path(current_user) %> |  <%= link_to "Log Out", signout_path, method: "delete" %> </h6>
+      <hr>
+      
+    </section>
+  </aside>
+
+
+<div class="span8">
+<div>
+  <h3> <%= @campaign.title %> </h3>
+  <h4> Manage Gift Card Recipients</h4>
+</div>
+
+  <% if @campaign_recipients.any? %>
+    <table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Title</th>
+      <th>Total Contributions</th>
+      <th>Who Contributed</th>
+      <th>Order Giftcard</th>
+      <th>Send Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @campaign_recipients.each do |recipient| %>
+      <tr>
+        <td><%= recipient.first_name %> <%= recipient.last_name %> </td>
+        <td><%= recipient.title %></td>
+        <td><%= recipient.line_items.sum('quantity') %></td>
+        <td>
+          <% recipient.line_items.each do |line_item| %>
+            <% if line_item.order %>
+              <%= line_item.order.name %>, 
+            <% end %>
+        <% end %>
+        </td>
+        <td>  <%= link_to "Order", '#', class: "btn btn-small btn-primary" %></td>
+        <td>  <%= link_to "Email", '#', class: "btn btn-small btn-primary" %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+  <% else %>
+    <br>
+    <p>You need to add <%= link_to 'recipients', new_recipient_path %> to your giftcard campaign before you can order giftcards.</p>
+  <% end %>
+</div>
+</div>

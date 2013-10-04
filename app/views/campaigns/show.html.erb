@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 <div class="row">
-<aside class="span3">
+  <aside class="span3">
+    <section>
+      <h4>
+        <%= link_to @user.name, current_user %>
+      </h4>
+      <h6>  <%= link_to "Edit Profile", edit_user_path(current_user) %> |  <%= link_to "Log Out", signout_path, method: "delete" %> </h6>
+    </section>
     <section>
       <div id="cart">
         <%= render @cart %>
@@ -8,25 +14,23 @@
     </section>
   </aside>
 
-
-<div class="span8">
-
-
-<div>
-  <h3> <%= @campaign.title %> </h3>
-  <h5> End Date: <%= @campaign.end_date %></h5>
-  <h5> Created by: <%= @campaign.user.name %></h5>
-  <body> <%= @campaign.description %></body>
-</div>
-
-
+  <div class="span8">
+  <div>
+    <h3> <%= @campaign.title %> </h3>
+    <h5> End Date: <%= @campaign.end_date %></h5>
+    <h5> Created by: <%= @campaign.user.name %></h5>
+    <body> <%= @campaign.description %></body>
+  </div>
   <% if @recipients.any? %>
     <p class="recipients">
       <%= render @recipients %>
     </p>
   <% else %>
     <br>
-    <p>Next step: add some <%= link_to 'recipients', new_recipient_path %> to your giftcard campaign!</p>
+    <p>Add some <%= link_to 'recipients', new_recipient_path %> to your giftcard campaign!</p>
+
+    
   <% end %>
 </div>
 </div>
+

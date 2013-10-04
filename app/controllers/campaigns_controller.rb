@@ -7,6 +7,10 @@ class CampaignsController < ApplicationController
   # GET /campaigns.json
   def index
     @campaigns = Campaign.all
+    respond_to do |format|
+      format.html
+      format.csv { render text: @campaigns.to_csv }
+    end
 
   end
 
@@ -18,13 +22,31 @@ class CampaignsController < ApplicationController
     @recipients = @campaign.recipients.all
   end
 
+ def campaign_recipients
+    @user = current_user
+    @campaign = Campaign.find(params[:id])
+    @campaign_recipients = @campaign.recipients.load
+    respond_to do |format|
+      format.html
+      format.csv { render text: @campaign_recipients.to_csv }
+    end
+  end
+
+ def order_recipient_giftcards
+    @user = current_user
+    @campaign = Campaign.find(params[:id])
+    @campaign_recipients = @campaign.recipients.all
+  end
+
   # GET /campaigns/new
   def new
+    @user = current_user
     @campaign = Campaign.new
   end
 
   # GET /campaigns/1/edit
   def edit
+    @user = current_user
   end
 
   # POST /campaigns
@@ -73,4 +95,6 @@ class CampaignsController < ApplicationController
     def campaign_params
       params.require(:campaign).permit(:title, :description, :end_date, :user_id, :recipient_id)
     end
+
+    
 end
