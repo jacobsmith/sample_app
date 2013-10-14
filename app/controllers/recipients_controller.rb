@@ -4,9 +4,9 @@ class RecipientsController < ApplicationController
   # GET /recipients
   # GET /recipients.json
   def index
-    @recipients = Recipient.where("campaign_id = 1")
+    @recipients = Recipient.all
     #@recipients = current_user.recipients.paginate(page: params[:page])
-    #@campaign = Campaign.find.all
+    #campaign = Campaign.find.all
     #@campaign = Campaign.find(params[:id])
     #@recipients = @campaign.recipients
   end
@@ -21,6 +21,7 @@ class RecipientsController < ApplicationController
   def new
     @recipient = Recipient.new
     @user = current_user
+    @campaign = Campaign.find(params[:campaign_id])
   end
 
   # GET /recipients/1/edit
@@ -31,14 +32,16 @@ class RecipientsController < ApplicationController
   # POST /recipients.json
   def create
     @recipient = Recipient.new(recipient_params)
+    @campaign = Campaign.find(params[:campaign_id])
+    @recipient.campaign = @campaign
     @recipient.user_id = current_user.id
-    @recipient.campaign_id = 1
     @recipient.price = 1.00
+
 
 
     respond_to do |format|
       if @recipient.save
-        format.html { redirect_to recipients_path, notice: "Recipient #{@recipient.first_name} #{@recipient.last_name} created." }
+        format.html { redirect_to current_user, notice: "Recipient #{@recipient.first_name} #{@recipient.last_name} created." }
         format.json { render action: 'show', status: :created, location: @recipient }
       else
         format.html { render action: 'new' }

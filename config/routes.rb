@@ -12,6 +12,7 @@ SampleApp::Application.routes.draw do
   resources :campaigns do
     get :campaign_recipients, on: :member
     get :order_recipient_giftcards, on: :member
+    resources :recipients
   end
 
   resources :users

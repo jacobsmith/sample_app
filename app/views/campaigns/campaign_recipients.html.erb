@@ -20,7 +20,7 @@
   <h4> Manage Gift Card Recipients</h4>
 </div>
 
-<%= link_to 'Add new recipient', new_recipient_path %> <br>
+<%= link_to 'Add new recipient', new_campaign_recipient_path(@campaign, @recipient) %> <br>
 Manage recipients with a spreadsheet: Download | Upload <br>
 <i>(Better when you have lots of recipients to add.)</i>
   <% if @campaign_recipients.any? %>
@@ -37,7 +37,7 @@ Manage recipients with a spreadsheet: Download | Upload <br>
   <tbody>
     <% @campaign_recipients.each do |recipient| %>
       <tr>
-        <td><%= link_to 'Edit', edit_recipient_path(recipient) %> | 
+        <td><%= link_to 'Edit', edit_campaign_recipient_path(@campaign, recipient) %> | 
         <%= link_to 'Delete', recipient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= recipient.first_name %> </td>
         <td><%= recipient.last_name %> </td>
