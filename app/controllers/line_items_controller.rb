@@ -27,7 +27,8 @@ class LineItemsController < ApplicationController
   # POST /line_items.json
   def create
     recipient = Recipient.find(params[:recipient_id])
-    @line_item = @cart.add_recipient(recipient.id)
+    quantity =  params[:quantity]  #this needs to be the value passed up by the button.
+    @line_item = @cart.add_recipient(recipient.id, quantity)
     #@campaign = campaign.id
     #need to redirect back to the current campaign
 

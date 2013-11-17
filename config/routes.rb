@@ -1,4 +1,6 @@
 SampleApp::Application.routes.draw do
+  resources :charges
+
   resources :orders
 
   resources :line_items

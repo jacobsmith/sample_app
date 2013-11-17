@@ -21,7 +21,10 @@
 </div>
 
 <%= link_to 'Add new recipient', new_campaign_recipient_path(@campaign, @recipient) %> <br>
-Manage recipients with a spreadsheet: Download | Upload <br>
+<p>Download:
+<%= link_to "CSV", campaign_recipients_campaign_path(format: "csv") %>
+</p>
+
 <i>(Better when you have lots of recipients to add.)</i>
   <% if @campaign_recipients.any? %>
     <table>

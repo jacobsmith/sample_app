@@ -13,6 +13,7 @@ gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 group :development, :test do
   gem 'sqlite3', '1.3.7'
   gem 'rspec-rails', '2.13.1'
+  gem 'pry-rails'
   # The following optional lines are part of the advanced setup.
   # gem 'guard-rspec', '2.5.0'
   # gem 'spork-rails', github: 'sporkrb/spork-rails'

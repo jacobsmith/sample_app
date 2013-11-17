@@ -1,34 +1,60 @@
 <%= form_for(@order) do |f| %>
+  <div  class="payment-errors">&nbsp;</div>
   <% if @order.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
-
       <ul>
-      <% @order.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @order.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-
+  <legend>Order Information</legend>
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name, size: 40 %>
   </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_area :address, rows: 3, cols: 40 %>
-  </div>
+  
   <div class="field">
     <%= f.label :email %><br>
     <%= f.email_field :email, size: 40 %>
   </div>
+  <%#= f.hidden_field :stripe_token %>
+<!-- these fields are disabled before submission and are never transmitted back to rails -->
   <div class="field">
-    <%= f.label :pay_type %><br>
-    <%= f.select :pay_type, Order::PAYMENT_TYPES, 
-                  prompt: 'Select a payment method' %>
+    <%= label_tag :credit_card_number %>
+    <div class="input">
+      <input type="text" class="field" data-stripe="number" />
+    </div>
   </div>
-  <div class="actions">
+  <div class="clearfix">
+    <%= label_tag :cvv, "Security code (CVC)" %>
+    <div class="input">
+      <input type="text" class="field small" data-stripe="cvc"/>
+    </div>
+  </div>
+  <div class="clearfix">
+    <%= label_tag :expiration_date %>
+    <div class="input">
+      <select data-stripe="exp-month">
+        <% Array(1..12).each do |month| %>
+          <option value="<%= month %>"><%= month %></option>
+        <% end %>
+      </select>
+      <select data-stripe="exp-year">
+        <% Array(Date.today.year..(Date.today.year+25)).each do |year| %>
+          <option value="<%= year %>"><%= year %></option>
+        <% end %>
+      </select>
+    </div>
+  </div>
+    <span class="note">
+      Your credit card details will be sent directly to our payment processor
+    </span>
+  <div> 
     <%= f.submit 'Place Order' %>
   </div>
 <% end %>
+
+

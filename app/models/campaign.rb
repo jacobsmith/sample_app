@@ -5,11 +5,17 @@ class Campaign < ActiveRecord::Base
 	validates :title, presence: true
 	validates :user_id, presence: true
 
-  def self.to_csv
+  def to_csv
+  	column_names = ['first_name', 'last_name', 'title', 'campaign_id']
     CSV.generate do |csv|
 	  csv << column_names
-	  all.each do |campaign_recipient|
-		csv << campaign_recipient.attributes.values_at(*column_names)
+	  recipients.each do |campaign_recipient|
+		csv << [
+			campaign_recipient.first_name,
+			campaign_recipient.last_name,
+			campaign_recipient.title,
+			campaign_recipient.campaign_id 
+		]
 	  end
 	end
   end

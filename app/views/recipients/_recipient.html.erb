@@ -1,13 +1,15 @@
 <table>
   <tr>
-    <td> 
-      <%= button_to 'Thanks', line_items_path(recipient_id: recipient), remote: true, class: "btn-mini btn-primary"  %>
-    </td>
-    <td>
+    <td width="150">
       <body>
         <%= recipient.first_name %> <%= recipient.last_name %>
       </body><br>
       <span class="timestamp"> <%= recipient.title %> </span>
     </td>
+    <td width = "75"> <%= button_to '$1.00', line_items_path(recipient_id: recipient, quantity: 1), remote: true, class: "btn-mini btn-primary" %> </td>
+    <td width = "75"><%= button_to '$5.00', line_items_path(recipient_id: recipient, quantity: 5), remote: true, class: "btn-mini btn-primary" %> </td>
+    <td width = "75"><%= button_to '$10.00', line_items_path(recipient_id: recipient, quantity: 10), remote: true, class: "btn-mini btn-primary" %> </td>
+    <td width = "75"><%= button_to '$25.00', line_items_path(recipient_id: recipient, quantity: 25), remote: true, class: "btn-mini btn-primary" %> </td>
+    <td width = "75"><%= button_to '$50.00', line_items_path(recipient_id: recipient, quantity: 50), remote: true, class: "btn-mini btn-primary" %> </td>
   </tr>
 </table>

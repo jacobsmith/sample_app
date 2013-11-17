@@ -28,7 +28,8 @@ class CampaignsController < ApplicationController
     @campaign_recipients = @campaign.recipients.load
     respond_to do |format|
       format.html
-      format.csv { render text: @campaign_recipients.to_csv }
+      format.csv { send_data @campaign.to_csv }
+      #format.csv { render text: @campaign_recipients.to_csv }
     end
   end
 

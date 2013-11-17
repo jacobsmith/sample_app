@@ -21,6 +21,10 @@ class OrdersController < ApplicationController
       return
     end
     @order = Order.new
+    @amount = @cart.total_price.to_int * 100
+    @service_fee = (@cart.total_price * 0.031) + 0.30
+    @total_transaction_amount = @cart.total_price.to_int + @service_fee
+    @organizer_credit = @cart.total_price * 0.05
   end
 
   # GET /orders/1/edit
@@ -33,12 +37,56 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(@cart)
 
+    # Stripe stuff
+
+    #customer = Stripe::Customer.create(
+    #  :email => 'example@stripe.com',
+    #  :card  => params[:stripeToken]
+    #)
+
+    begin
+      rescue Stripe::CardError => e
+    @user.errors.add :base, e.message
+    @user.stripe_token = nil
+    render :action => :new
+
+  rescue Stripe::StripeError => e
+    logger.error e.message
+    @user.errors.add :base, "There was a problem with your credit card"
+    @user.stripe_token = nil
+    render :action => :new
+  end
+
+  #######
+=begin
+      charge = Stripe::Charge.create(
+        #:customer    => customer.id,
+        :amount      => @amount,
+        :description => 'Rails Stripe customer',
+        :currency    => 'usd',
+        :card        => {
+          :number => @order.card_number,
+          :exp_month => @order.card_expiration.split('/')[0],
+          :exp_year  => @order.card_expiration.split('/')[1],
+          :cvc       => @order.card_cvv2
+        }
+      )
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      render :action => :new
+      return
+    end
+=end
+
+
+    #end Stripe stuff
     respond_to do |format|
+      #binding.pry
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
         OrderNotifier.received(@order).deliver
-        format.html { redirect_to campaigns_url, notice: 'Thank you for your order.' }
+        format.html { redirect_to campaigns_url, notice: "Thank you for your order of #{@order}." }
         format.json { render action: 'show', status: :created, location: @order }
       else
         format.html { render action: 'new' }
@@ -79,6 +127,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:name, :address, :email, :pay_type)
+      params.require(:order).permit(:name, :email, :card_number, :card_expiration, :card_cvv2, :name_on_card)
     end
 end

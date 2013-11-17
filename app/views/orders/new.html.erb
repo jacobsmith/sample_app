@@ -1,19 +1,34 @@
 <div class="row">
-<aside class="span3">
+  <aside class="span3">
     <section>
       <h1>
-       
         <%= render @cart %>
       </h1>
-   
     </section>
   </aside>
 
-<div class="span8">
+<div class="span4">
   <fieldset>
-    <legend>Please Enter Your Details</legend>
-
-    <%= render 'form' %>
+    <h5>Your Order</h5>
+      <table class="table table-bordered">
+        <tr>
+          <th>Cart:</th>
+          <td><%= (number_to_currency@cart.total_price) %></td>
+        </tr>
+        <tr>
+          <th>Handling Fee:</th>
+          <td><%= (number_to_currency@service_fee) %> </td>
+        </tr>
+          <th>Order Total:</th>
+          <td><%= (number_to_currency@total_transaction_amount)  %></td>
+        </tr>
+      </table>
+    </div>
   </fieldset>
-</div>
+    <div class="span8">
+      <div class="well"> 5% of this transaction (<%= (number_to_currency@organizer_credit) %>) will be donated to the organization running this giftcard campaign. 
+      </div>
+      <%= button_to 'Continue Shopping', campaigns_path, method: :get, class: "btn-small btn-primary" %>
+      <%= render 'form' %>
+  </div>
 </div>
