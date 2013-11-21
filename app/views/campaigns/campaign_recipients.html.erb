@@ -13,48 +13,37 @@
     </div>
   </section>
 </aside>
-
 <div class="span8">
-<div>
   <h3> <%= @campaign.title %> </h3>
   <h4> Manage Gift Card Recipients</h4>
-</div>
 
-<%= link_to 'Add new recipient', new_campaign_recipient_path(@campaign, @recipient) %> <br>
-<p>Download:
-<%= link_to "CSV", campaign_recipients_campaign_path(format: "csv") %>
-</p>
-
-<i>(Better when you have lots of recipients to add.)</i>
+  <%= link_to 'Add new recipient', new_campaign_recipient_path(@campaign, @recipient) %> <br>
+  <p>Download:
+  <%= link_to "CSV", campaign_recipients_campaign_path(format: "csv") %>
+  <i>(Better when you have lots of recipients to add.)</i>
+  </p>
   <% if @campaign_recipients.any? %>
     <table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Title</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @campaign_recipients.each do |recipient| %>
-      <tr>
-        <td><%= link_to 'Edit', edit_campaign_recipient_path(@campaign, recipient) %> | 
-        <%= link_to 'Delete', recipient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= recipient.first_name %> </td>
-        <td><%= recipient.last_name %> </td>
-        <td><%= recipient.title %></td>
-        
-        
-        
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-  <% else %>
-    <br>
-    <p>Next step: add some <%= link_to 'recipients', new_recipient_path %> to your giftcard campaign!</p>
+      <thead>
+        <tr>
+          <th></th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Title</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @campaign_recipients.each do |recipient| %>
+          <tr>
+            <td><%= link_to 'Edit', edit_campaign_recipient_path(@campaign, recipient) %> | 
+              <%= link_to 'Delete', recipient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= recipient.first_name %> </td>
+            <td><%= recipient.last_name %> </td>
+            <td><%= recipient.title %></td> 
+           </tr>
+        <% end %>
+      </tbody>
+    </table>
   <% end %>
-</div>
+  </div>
 </div>

@@ -10,18 +10,20 @@
       </ul>
     </div>
   <% end %>
-  <legend>Order Information</legend>
+  <h4>Order Information </h4>
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :name %> <em>Your name will be printed on the recipient's gift card greeting.</em><br>
     <%= f.text_field :name, size: 40 %>
   </div>
-  
-  <div class="field">
-    <%= f.label :email %><br>
+  <div class="field"> 
+    <%= f.label :email %><em>We will email you a receipt of this order. We will not use your email for any other purpose.</em>  <br>
     <%= f.email_field :email, size: 40 %>
   </div>
   <%#= f.hidden_field :stripe_token %>
 <!-- these fields are disabled before submission and are never transmitted back to rails -->
+    <div class="well">
+      Credit card details are sent directly to our payment processor Stripe. No credit card information is ever stored on ThankTheTeacher.com. <br><br>
+    
   <div class="field">
     <%= label_tag :credit_card_number %>
     <div class="input">
@@ -49,9 +51,7 @@
       </select>
     </div>
   </div>
-    <span class="note">
-      Your credit card details will be sent directly to our payment processor
-    </span>
+</div>
   <div> 
     <%= f.submit 'Place Order' %>
   </div>
