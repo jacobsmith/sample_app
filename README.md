@@ -1,3 +1,3 @@
-#RoR Tutorial: sample application
+#Thank The Teacher
 
-This is the sample application for Michael Hartl's RoR tutorial.
+Code based on sample application for Michael Hartl's RoR tutorial.
