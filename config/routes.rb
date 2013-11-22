@@ -15,6 +15,7 @@ SampleApp::Application.routes.draw do
     get :campaign_recipients, on: :member
     get :order_recipient_giftcards, on: :member
     resources :recipients
+    collection { post :import }
   end
 
   resources :users

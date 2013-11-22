@@ -6,6 +6,7 @@ class StaticPagesController < ApplicationController
   end
 
   def about
+  	@campaign = Campaign.find(1)
   end
 
   def tour

@@ -22,8 +22,8 @@
     <%= button_to 'Continue Shopping', campaigns_path, method: :get, class: "btn-small btn-primary" %>
   </div>
   <div class="span5">
-    <div class="well"> 5% of this transaction (<%= (number_to_currency@organizer_credit) %>) will be donated to the organization running this giftcard campaign. <br><br>
-    The handling fee pays for credit card processing on Stripe.com. Stripe encrypts and processes all credit card transactions. No credit card information is ever stored on ThankTheTeacher.com. 
+    <div class="well"> 5% of the value of this transaction (<%= (number_to_currency@organizer_credit) %>) will be donated to the organization running this giftcard campaign. We get this money from Amazon when we order the gift card. Funds are not taken out of your gift card contributions.<br><br>
+    The handling fee pays for credit card processing. Our service provider, Stripe.com, encrypts and processes all credit card transactions. Credit card information is <u>never</u> stored on ThankTheTeacher.com.
     </div>
   </div>
   <div class="span8">

@@ -86,6 +86,11 @@ class CampaignsController < ApplicationController
     end
   end
 
+  def import 
+    Campaign.import(params[:file])
+    redirect_to @campaign, notice: "Successfully uploaded giftcard recipients."
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_campaign

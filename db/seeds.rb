@@ -14,7 +14,7 @@ User.create!(name: "Example School",
              password_confirmation: "password",
              admin: true)
 
-Campaign.create!(title: "Introducing: Amazon Gift Card Program for Example School",
+Campaign.create!(title: "Amazon Gift Card Program for Example School",
 	             description: "Show our staff how much you appreciate them and share the warmth of the holiday season by contributing to their Amazon gift card account. Simply click on the links below and choose the staff members and amounts you wish to gift. We will order Amazon gift cards and deliver them to the staff. A note will accompany the cards recognizing the contributor's names. Take the guess work out of gift cards and as a bonus, Amazon will send a percentage of money on orders back to our school. Don't forget your bus driver, specials teachers and school staff too! Please note this program is being provided as a convenience for our families, and is totally optional.",
 	             end_date: "2014-12-12", 
 	             user_id: "1"

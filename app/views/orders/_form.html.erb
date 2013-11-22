@@ -12,7 +12,7 @@
   <% end %>
   <h4>Order Information </h4>
   <div class="field">
-    <%= f.label :name %> <em>Your name will be printed on the recipient's gift card greeting.</em><br>
+    <%= f.label :name %> <em>Your name will be printed on the recipients' gift card greeting.</em><br>
     <%= f.text_field :name, size: 40 %>
   </div>
   <div class="field"> 
@@ -22,38 +22,50 @@
   <%#= f.hidden_field :stripe_token %>
 <!-- these fields are disabled before submission and are never transmitted back to rails -->
     <div class="well">
-      Credit card details are sent directly to our payment processor Stripe. No credit card information is ever stored on ThankTheTeacher.com. <br><br>
-    
-  <div class="field">
-    <%= label_tag :credit_card_number %>
-    <div class="input">
-      <input type="text" class="field" data-stripe="number" />
+      Credit card information is immediately encrypted and sent directly to our payment processing service. Credit card information is <u>never</u> stored on ThankTheTeacher.com. <br><br>
+      <div class="row">
+        <div class="span2">
+          <div class="field">
+            <%= label_tag :credit_card_number %>
+            <div class="input">
+              <input type="text" class="field" data-stripe="number" />
+            </div>
+          </div>
+        </div>
+        <div class="span2">
+          <div class="clearfix">
+            <%= label_tag :cvv, "Security code (CVC)" %>
+            <div class="input">
+              <input type="text" class="field small" data-stripe="cvc"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <div class="clearfix">
+            <%= label_tag :expiration_month %>
+            <div class="input">
+              <select data-stripe="exp-month">
+                <% Array(1..12).each do |month| %>
+                  <option value="<%= month %>"><%= month %></option>
+                <% end %>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="span2">
+          <%= label_tag :expiration_year %>
+          <select data-stripe="exp-year">
+            <% Array(Date.today.year..(Date.today.year+25)).each do |year| %>
+              <option value="<%= year %>"><%= year %></option>
+            <% end %>
+          </select>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="clearfix">
-    <%= label_tag :cvv, "Security code (CVC)" %>
-    <div class="input">
-      <input type="text" class="field small" data-stripe="cvc"/>
-    </div>
-  </div>
-  <div class="clearfix">
-    <%= label_tag :expiration_date %>
-    <div class="input">
-      <select data-stripe="exp-month">
-        <% Array(1..12).each do |month| %>
-          <option value="<%= month %>"><%= month %></option>
-        <% end %>
-      </select>
-      <select data-stripe="exp-year">
-        <% Array(Date.today.year..(Date.today.year+25)).each do |year| %>
-          <option value="<%= year %>"><%= year %></option>
-        <% end %>
-      </select>
-    </div>
-  </div>
-</div>
   <div> 
-    <%= f.submit 'Place Order' %>
+    <%= f.submit 'Place Order', class: "btn-small btn-primary"  %>
   </div>
 <% end %>
 

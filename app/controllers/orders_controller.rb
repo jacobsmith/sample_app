@@ -45,17 +45,17 @@ class OrdersController < ApplicationController
     #)
 
     begin
-      rescue Stripe::CardError => e
-    @user.errors.add :base, e.message
-    @user.stripe_token = nil
-    render :action => :new
+    rescue Stripe::CardError => e
+      @user.errors.add :base, e.message
+      @user.stripe_token = nil
+      render :action => :new
 
-  rescue Stripe::StripeError => e
-    logger.error e.message
-    @user.errors.add :base, "There was a problem with your credit card"
-    @user.stripe_token = nil
-    render :action => :new
-  end
+    rescue Stripe::StripeError => e
+      logger.error e.message
+      @user.errors.add :base, "There was a problem with your credit card"
+      @user.stripe_token = nil
+      render :action => :new
+    end
 
   #######
 =begin
@@ -86,7 +86,7 @@ class OrdersController < ApplicationController
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
         OrderNotifier.received(@order).deliver
-        format.html { redirect_to campaigns_url, notice: "Thank you for your order of #{@order}." }
+        format.html { redirect_to campaigns_url, notice: "Thank you for your order. We just emailed you a receipt." }
         format.json { render action: 'show', status: :created, location: @order }
       else
         format.html { render action: 'new' }
@@ -127,6 +127,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:name, :email, :card_number, :card_expiration, :card_cvv2, :name_on_card)
+      params.require(:order).permit(:name, :email, :card_number, :card_expiration, :card_cvv2, :name_on_card, :stripe_id)
     end
 end
