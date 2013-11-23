@@ -23,7 +23,7 @@
   <i>(Better when you have lots of recipients to add.)</i>
   </p>
 
-  <%= form_tag campaign_recipients_campaign_path, multipart: true do %>
+  <%= form_tag import_campaigns_path, multipart: true do %>
     <%= file_field_tag :file %>
     <%= submit_tag "Import" %>
   <% end %>

@@ -11,7 +11,6 @@ class CampaignsController < ApplicationController
       format.html
       format.csv { render text: @campaigns.to_csv }
     end
-
   end
 
   # GET /campaigns/1
@@ -31,6 +30,11 @@ class CampaignsController < ApplicationController
       format.csv { send_data @campaign.to_csv }
       #format.csv { render text: @campaign_recipients.to_csv }
     end
+  end
+
+  def import 
+    Campaign.import(params[:file])
+    redirect_to root_url, notice: "Successfully uploaded giftcard recipients."
   end
 
  def order_recipient_giftcards
@@ -86,10 +90,7 @@ class CampaignsController < ApplicationController
     end
   end
 
-  def import 
-    Campaign.import(params[:file])
-    redirect_to @campaign, notice: "Successfully uploaded giftcard recipients."
-  end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

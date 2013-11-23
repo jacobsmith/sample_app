@@ -9,6 +9,7 @@ SampleApp::Application.routes.draw do
 
   resources :recipients do
     get :who_bought, on: :member
+    collection { post :import }
   end
 
   resources :campaigns do
