@@ -3,13 +3,13 @@
   <div class="span8 offset3">
 <h4>Sign up</h4>
 <p>
-  Registration is for the parent volunteer running your school or classroom's giftcard campaign. You do not need to register to donate to your teacher's Gift Card account.
+  Registration is for the volunteer that will be running a Gift Card Campaign. Registration is not necessary to contribute to a Gift Card Campaign. 
 </p>
 
 
     <%= form_for(@user) do |f| %>
       <%= render 'fields', f: f %>
-      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+      <%= f.submit "Create my account", class: "btn btn-large btn-warning" %>
     <% end %>
   </div>
 </div>

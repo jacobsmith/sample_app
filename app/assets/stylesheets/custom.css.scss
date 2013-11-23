@@ -57,9 +57,14 @@ h2 {
   color: $grayLight;
 }
 
+h4 {
+  padding-left: 10px;
+}
+
 p {
   font-size: 1.1em;
   line-height: 1.7em;
+  padding-left: 10px;
 }
 
 /* header */
@@ -159,11 +164,6 @@ aside {
       margin-top: 0px;
     }
   }
-}
-
-.gravatar {
-  float: left;
-  margin-right: 10px;
 }
 
 /* Users index */
