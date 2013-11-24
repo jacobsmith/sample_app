@@ -39,11 +39,6 @@ class OrdersController < ApplicationController
 
     # Stripe stuff
 
-    #customer = Stripe::Customer.create(
-    #  :email => 'example@stripe.com',
-    #  :card  => params[:stripeToken]
-    #)
-
     begin
     rescue Stripe::CardError => e
       @user.errors.add :base, e.message
@@ -56,28 +51,6 @@ class OrdersController < ApplicationController
       @user.stripe_token = nil
       render :action => :new
     end
-
-  #######
-=begin
-      charge = Stripe::Charge.create(
-        #:customer    => customer.id,
-        :amount      => @amount,
-        :description => 'Rails Stripe customer',
-        :currency    => 'usd',
-        :card        => {
-          :number => @order.card_number,
-          :exp_month => @order.card_expiration.split('/')[0],
-          :exp_year  => @order.card_expiration.split('/')[1],
-          :cvc       => @order.card_cvv2
-        }
-      )
-    rescue Stripe::CardError => e
-      flash[:error] = e.message
-      render :action => :new
-      return
-    end
-=end
-
 
     #end Stripe stuff
     respond_to do |format|
