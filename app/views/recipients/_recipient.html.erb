@@ -1,15 +1,13 @@
-<table>
+<table >
   <tr>
-    <td width="150">
-      <body>
-        <%= recipient.first_name %> <%= recipient.last_name %>
-      </body><br>
+    <td width="150" style="padding:0px;line-height:14px;vertical-align:top">
+      <%= recipient.first_name %> <%= recipient.last_name %>
+      <br>
       <span class="timestamp"> <%= recipient.title %> </span>
     </td>
-    <td width = "75"> <%= button_to '$1.00', line_items_path(recipient_id: recipient, quantity: 1), remote: true, class: "btn-mini btn-primary" %> </td>
-    <td width = "75"><%= button_to '$5.00', line_items_path(recipient_id: recipient, quantity: 5), remote: true, class: "btn-mini btn-primary" %> </td>
-    <td width = "75"><%= button_to '$10.00', line_items_path(recipient_id: recipient, quantity: 10), remote: true, class: "btn-mini btn-primary" %> </td>
-    <td width = "75"><%= button_to '$25.00', line_items_path(recipient_id: recipient, quantity: 25), remote: true, class: "btn-mini btn-primary" %> </td>
-    <td width = "75"><%= button_to '$50.00', line_items_path(recipient_id: recipient, quantity: 50), remote: true, class: "btn-mini btn-primary" %> </td>
+
+    <%[1,5,10,25,50].each do |value| %>
+    <td width = "75"> <%= button_to "$#{value}.00", line_items_path(recipient_id: recipient, quantity: value), remote: true, class: "btn-mini btn-primary" %> </td>
+    <%end%>
   </tr>
 </table>
