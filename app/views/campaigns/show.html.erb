@@ -22,6 +22,7 @@
     <h5> End Date: <%= @campaign.end_date %></h5>
     <h5> Created by: <%= @campaign.user.name %></h5>
     <body> <%= @campaign.description %></body>
+    <div class="alert" align="center">Its easy! Find your teacher, pick an amount to gift, and make their day.<br>Gifting is usually tax deductible. Check with your accountant to be sure.</div> 
   </div>
   <% if @recipients.any? %>
     <p class="recipients">
