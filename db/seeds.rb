@@ -62,3 +62,30 @@ Recipient.create([{ first_name: "John",
 				    user_id: "1",
 				    campaign_id: "1" } 
 				    ])
+
+User.create!(name: "Fishers High School Softball and Athletics",
+             email: "annettedoherty5@gmail.com",
+             password: "Geist!0",
+             password_confirmation: "Geist!0",
+             admin: true)
+
+Campaign.create!(title: "Holiday Gift Cards",
+	             description: "Here is a quick and easy way to order gift cards for FHS teachers, coaches, staff and bus drivers.",
+	             end_date: "2013-12-9", 
+	             user_id: "2"
+                 )
+
+Recipient.create([{ first_name: "James",
+				    last_name: "Brown",
+				    title: "AD",
+				    price: "1",
+				    user_id: "2",
+				    campaign_id: "2" }, {
+
+				    first_name: "John",
+				    last_name: "Miles",
+				    title: "AD",
+				    price: "1",
+				    user_id: "2",
+				    campaign_id: "2" } 
+				    ])

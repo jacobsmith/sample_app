@@ -11,20 +11,19 @@
     </div>
   <% end %>
   <h4>Order Information </h4>
-  <div class="field">
+  <div class="span8 offset3">
     <%= f.label :name %> <em>Your name will be printed on the recipients' gift card greeting.</em><br>
     <%= f.text_field :name, size: 40 %>
   </div>
-  <div class="field"> 
+  <div class="span8 offset3">
     <%= f.label :email %><em>We will email you a receipt of this order. We will not use your email for any other purpose.</em>  <br>
     <%= f.email_field :email, size: 40 %>
   </div>
   <%#= f.hidden_field :stripe_token %>
 <!-- these fields are disabled before submission and are never transmitted back to rails -->
-    <div class="well">
-      Credit card information is immediately encrypted and sent directly to our payment processing service. Credit card information is <u>never</u> stored on ThankTheTeacher.com. <br><br>
-      <div class="row">
-        <div class="span2">
+    
+      
+        <div class="span2 offset3">
           <div class="field">
             <%= label_tag :credit_card_number %>
             <div class="input">
@@ -40,8 +39,8 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="row">
+      
+      
         <div class="span2">
           <div class="clearfix">
             <%= label_tag :expiration_month %>
@@ -62,9 +61,9 @@
             <% end %>
           </select>
         </div>
-      </div>
+      
     </div>
-  <div> 
+  <div class="span3, offset3"> 
     <%= f.submit 'Place Order', class: "btn-small btn-primary"  %>
   </div>
 <% end %>

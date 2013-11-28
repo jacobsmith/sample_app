@@ -7,6 +7,7 @@
       <%= render @cart %>
     </section>
   </aside>
+  <div class="row">
   <div class="span4">
     <h4>Checkout</h4>
     <table class="table table-bordered">
@@ -25,11 +26,9 @@
     <%= button_to 'Continue Shopping', campaigns_path, method: :get, class: "btn-small btn-primary" %>
   </div>
   <div class="span5">
-    <div class="well"> 5% of the value of this transaction (<%= (number_to_currency@organizer_credit) %>) will be donated to the organization running this giftcard campaign. We get this money from Amazon when we order the gift card. Funds are not taken out of your gift card contributions.<br><br>
-    The handling fee pays for credit card processing. Our service provider, Stripe.com, encrypts and processes all credit card transactions. Credit card information is <u>never</u> stored on ThankTheTeacher.com.
+    <div class="well"> 5% of the value of this transaction (<%= (number_to_currency@organizer_credit) %>) will be donated to the organization running this Gift Card campaign. We get this money from Amazon when we order the gift card. Funds are not taken out of your Gift Card contributions.<br><br>
+    The handling fee pays for credit card processing. Our service provider, Stripe.com, encrypts and processes all credit card transactions. Credit card information is <u>never</u> stored on ThankTheTeacher.com. 
     </div>
   </div>
-  <div class="span8">
-    <%= render 'form' %>
-  </div>
+  <%= render 'form' %>
 </div>

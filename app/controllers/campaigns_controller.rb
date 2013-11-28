@@ -18,7 +18,7 @@ class CampaignsController < ApplicationController
   def show
     @user = current_user
     @campaign = Campaign.find(params[:id])
-    @recipients = @campaign.recipients.all
+    @recipients = @campaign.recipients.paginate(page: params[:page])
   end
 
  def campaign_recipients
