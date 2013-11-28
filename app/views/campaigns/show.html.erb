@@ -22,12 +22,21 @@
     <h5> End Date: <%= @campaign.end_date %></h5>
     <h5> Created by: <%= @campaign.user.name %></h5>
     <body> <%= @campaign.description %></body>
-    <div class="alert" align="center">Its easy! Find your teacher, pick an amount to gift, and make their day.<br>Gifting is usually tax deductible. Check with your accountant to be sure.</div> 
+    <div class="alert" align="center">Super easy! Find your teacher, click an amount to gift, and make their day.<br>Gifting is usually tax deductible. Check with your accountant to be sure.<br>5% of the value of this order goes back to your school. <br>(This comes out of our pocket, not yours.)</div> 
   </div>
+  <%#= will_paginate %>
   <% if @recipients.any? %>
+    
     <p class="recipients">
+    <table border=1><tr>
+      <th align="right">Name</th>
+      <th align="left"></th>
+      <th align="left">Occupation</th>
+      <th align="left">Gift</th></tr>
       <%= render @recipients %>
+    </table>
     </p>
+    <%#= will_paginate %>
   <% else %>
     <br>
     <p>Add some <%= link_to 'recipients', new_recipient_path %> to your giftcard campaign!</p>

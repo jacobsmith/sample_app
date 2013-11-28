@@ -1,13 +1,14 @@
-<table >
   <tr>
-    <td width="150" style="padding:0px;line-height:14px;vertical-align:top">
-      <%= recipient.first_name %> <%= recipient.last_name %>
-      <br>
-      <span class="timestamp"> <%= recipient.title %> </span>
+    <td width = "75" style="padding:0px;line-height:14px;vertical-align:top">
+      <%= recipient.first_name %></td>
+      <td width = "100" style="padding:0px;line-height:14px;vertical-align:top">
+      <%= recipient.last_name %></td>
+      <td width = "120" style="padding:0px;line-height:14px;vertical-align:top">
+      <%= recipient.title %></td>
+       
     </td>
 
     <%[1,5,10,25,50].each do |value| %>
-    <td width = "75"> <%= button_to "$#{value}.00", line_items_path(recipient_id: recipient, quantity: value), remote: true, class: "btn-mini btn-primary" %> </td>
+    <td width = "60"> <%= button_to "$#{value}.00", line_items_path(recipient_id: recipient, quantity: value), remote: true, class: "btn-mini btn-primary" %> </td>
     <%end%>
   </tr>
-</table>
