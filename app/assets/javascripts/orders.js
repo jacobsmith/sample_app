@@ -1,11 +1,10 @@
- Stripe.setPublishableKey('pk_test_rWTu8a6cRKFCdqOzYdpSK7JA');
-
- jQuery(function($) {
+jQuery(function($) {
   $('#new_order').submit(function(event) {
     var $form = $(this);
 
     // Disable the submit button to prevent repeated clicks
-    $form.find('button').prop('disabled', true);
+    $form.find("input[type='submit']").prop('disabled', true);
+    $form.find("input[type='submit']").attr('value', 'Processing...');
 
     Stripe.card.createToken($form, stripeResponseHandler);
 
@@ -14,9 +13,8 @@
   });
 });
 
- var stripeResponseHandler = function(status, response) {
+var stripeResponseHandler = function(status, response) {
   var $form = $('#new_order');
-  console.log('and here')
   if (response.error) {
     // Show the errors on the form
     $form.find('.payment-errors').text(response.error.message);
