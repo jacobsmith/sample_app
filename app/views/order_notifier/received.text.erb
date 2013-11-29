@@ -1,10 +1,16 @@
-Dear <%= @order.name %>
+Dear <%= @order.name %>,
 
 Thank you for your order.
 You made the following contributions:
 
+<%= @order.total_transaction_amount %> was charged to your card.
+<%= @order.organizer_credit %> will be donated back to the Gifting Organization.
+
 <%= render @order.line_items -%>
 
-Best,
+
+Thank you,
 
 ThankTheTeacher.com
+
+Gifting is usually tax deductible. Retain your receipt for your tax return.

@@ -1,4 +1,4 @@
 <%= sprintf("%2d x %s",
 	line_item.quantity,
-	truncate(line_item.recipient.first_name, length: 50)
+	truncate(line_item.recipient.first_name, line_item.recipient.last_name, length: 50)
 	) %>
