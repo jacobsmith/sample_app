@@ -1,0 +1,5 @@
+<% if Rails.env.production? %>
+  Stripe.setPublishableKey('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+<% else %>
+  Stripe.setPublishableKey('pk_test_rWTu8a6cRKFCdqOzYdpSK7JA');
+<% end %>
