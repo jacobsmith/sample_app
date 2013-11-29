@@ -36,25 +36,9 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(@cart)
+    @order.stripe_id = params[:stripe_id]
 
-    # Stripe stuff
-
-    begin
-    rescue Stripe::CardError => e
-      @user.errors.add :base, e.message
-      @user.stripe_token = nil
-      render :action => :new
-
-    rescue Stripe::StripeError => e
-      logger.error e.message
-      @user.errors.add :base, "There was a problem with your credit card"
-      @user.stripe_token = nil
-      render :action => :new
-    end
-
-    #end Stripe stuff
     respond_to do |format|
-      #binding.pry
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil

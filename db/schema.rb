@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131112220403) do
+ActiveRecord::Schema.define(version: 20131128144008) do
 
   create_table "campaigns", force: true do |t|
     t.string   "title"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20131112220403) do
     t.string   "pay_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "stripe_id"
+    t.string   "stripe_id"
   end
 
   create_table "recipients", force: true do |t|

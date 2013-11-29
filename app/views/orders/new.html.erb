@@ -1,3 +1,6 @@
+<% content_for(:head) do  %>
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<% end %>
 <div class="row">
   <aside class="span3">
     <section>
@@ -39,7 +42,5 @@
     The handling fee pays for credit card processing. Our service provider, Stripe.com, encrypts and processes all credit card transactions. Credit card information is <u>never</u> stored on ThankTheTeacher.com. 
     </div>
   </div>
-
   <%= render 'form' %>
-</div>
 </div>
