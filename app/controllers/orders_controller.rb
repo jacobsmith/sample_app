@@ -21,10 +21,11 @@ class OrdersController < ApplicationController
       return
     end
     @order = Order.new
-    @amount = @cart.total_price.to_int * 100
-    @service_fee = (@cart.total_price * 0.031) + 0.30
-    @total_transaction_amount = @cart.total_price.to_int + @service_fee
-    @organizer_credit = @cart.total_price * 0.05
+    # All in cents!
+    @amount = (@cart.total_price * 100).to_i
+    @service_fee = (@amount * 0.031 + 30).to_i
+    @total_transaction_amount = @amount + @service_fee
+    @organizer_credit = (@amount * 0.05).to_i
   end
 
   # GET /orders/1/edit
@@ -37,6 +38,17 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(@cart)
     @order.stripe_id = params[:stripe_id]
+    begin
+      charge = Stripe::Charge.create(
+        :amount => (@order.total_price * 100).to_i, # amount in cents, again
+        :currency => "usd",
+        :card => @order.stripe_id,
+        :description => @order.email
+      )
+    rescue Stripe::CardError => e
+      # The card has been declined
+      # end
+    end
 
     respond_to do |format|
       if @order.save

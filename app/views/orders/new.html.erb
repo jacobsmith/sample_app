@@ -15,7 +15,7 @@
         <th>Cart:</th>
         <td>
          <div class="text-right">
-           <%= (number_to_currency@cart.total_price) %>
+           <%= (number_to_currency @amount.to_d / 100.0) %>
           </div>
         </td>
       </tr>
@@ -23,14 +23,14 @@
         <th>Handling Fee:</th>
         <td>
           <div class="text-right">
-            <%= (number_to_currency@service_fee) %> 
+            <%= (number_to_currency @service_fee.to_d / 100.0) %> 
           </div>
         </td>
       </tr>
         <th>Order Total:</th>
         <td>
           <div class="text-right">
-            <%= (number_to_currency@total_transaction_amount)  %>
+            <%= (number_to_currency @total_transaction_amount.to_d / 100.0)  %>
           </div>
         </td>
       </tr>
@@ -38,7 +38,7 @@
     <%= button_to 'Continue Shopping', campaigns_path, method: :get, class: "btn-small btn-primary" %>
   </div>
   <div class="span5">
-    <div class="well"> 5% of the value of this transaction (<%= (number_to_currency@organizer_credit) %>) will be donated to the organization running this Gift Card campaign. We get this money from Amazon when we order the gift card. Funds are not taken out of your Gift Card contributions.<br><br>
+    <div class="well"> 5% of the value of this transaction (<%= (number_to_currency @organizer_credit.to_d / 100.0) %>) will be donated to the organization running this Gift Card campaign. We get this money from Amazon when we order the gift card. Funds are not taken out of your Gift Card contributions.<br><br>
     The handling fee pays for credit card processing. Our service provider, Stripe.com, encrypts and processes all credit card transactions. Credit card information is <u>never</u> stored on ThankTheTeacher.com. 
     </div>
   </div>

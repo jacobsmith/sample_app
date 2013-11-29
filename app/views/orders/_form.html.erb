@@ -19,7 +19,6 @@
     <%= f.label :email %><em>We will email you a receipt of this order. We will not use your email for any other purpose.</em>  <br>
     <%= f.email_field :email, size: 40 %>
   </div>
-  <%#= f.hidden_field :stripe_token %>
 <!-- these fields are disabled before submission and are never transmitted back to rails -->
     
       
@@ -61,8 +60,6 @@
             <% end %>
           </select>
         </div>
-      
-    </div>
   <div class="span3, offset3"> 
     <%= f.submit 'Place Order', class: "btn-small btn-primary"  %>
   </div>
