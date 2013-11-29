@@ -10,14 +10,26 @@
     <table class="table table-bordered">
       <tr>
         <th>Cart:</th>
-        <td><%= (number_to_currency@cart.total_price) %></td>
+        <td>
+         <div class="text-right">
+           <%= (number_to_currency@cart.total_price) %>
+          </div>
+        </td>
       </tr>
       <tr>
         <th>Handling Fee:</th>
-        <td><%= (number_to_currency@service_fee) %> </td>
+        <td>
+          <div class="text-right">
+            <%= (number_to_currency@service_fee) %> 
+          </div>
+        </td>
       </tr>
         <th>Order Total:</th>
-        <td><%= (number_to_currency@total_transaction_amount)  %></td>
+        <td>
+          <div class="text-right">
+            <%= (number_to_currency@total_transaction_amount)  %>
+          </div>
+        </td>
       </tr>
     </table>
     <%= button_to 'Continue Shopping', campaigns_path, method: :get, class: "btn-small btn-primary" %>

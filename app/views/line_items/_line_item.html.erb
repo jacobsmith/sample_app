@@ -4,8 +4,13 @@
 <% else %>
 <tr>
 <% end %>
-    <td><%= number_to_currency(line_item.quantity) %></td>
+    
     <td><%= line_item.recipient.first_name %> 
         <%= line_item.recipient.last_name %>
+    </td>
+    <td>
+      <div class="text-right">
+        <%= number_to_currency(line_item.quantity) %>
+      </div>
     </td>
 </tr>
