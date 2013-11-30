@@ -3,6 +3,7 @@ class CampaignsController < ApplicationController
   include CurrentCart
   before_action :set_cart
 
+  helper_method :sort_column, :sort_direction
   # GET /campaigns
   # GET /campaigns.json
   def index
@@ -18,7 +19,7 @@ class CampaignsController < ApplicationController
   def show
     @user = current_user
     @campaign = Campaign.find(params[:id])
-    @recipients = @campaign.recipients.paginate :per_page => 25, :page => params[:page]
+    @recipients = @campaign.recipients.order(sort_column + " " + sort_direction).paginate :per_page => 25, :page => params[:page]
   end
 
  def campaign_recipients
@@ -103,5 +104,12 @@ class CampaignsController < ApplicationController
       params.require(:campaign).permit(:title, :description, :end_date, :user_id, :recipient_id)
     end
 
+    def sort_column
+      params[:sort] || "name"
+    end
+
+    def sort_direction
+      params[:direction] || "asc"
+    end
     
 end
