@@ -3,8 +3,8 @@ Dear <%= @order.name %>,
 Thank you for your order.
 You made the following contributions:
 
-<%= @order.total_transaction_amount %> was charged to your card.
-<%= @order.organizer_credit %> will be donated back to the Gifting Organization.
+<%= number_to_currency(@order.total_transaction_amount / 100.0) %> was charged to your card.
+<%= number_to_currency(@order.organizer_credit / 100.0) %> will be donated back to the Gifting Organization.
 
 <%= render @order.line_items -%>
 
