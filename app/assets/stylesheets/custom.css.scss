@@ -226,3 +226,19 @@ aside {
   margin-top: 45px;
   @include box_sizing;
 }
+
+table#recipients tr td.button-container {
+  text-align: center;
+}
+
+form.button_to {
+  display: inline;
+  margin: 0;
+  div {
+    display: inline;
+    margin: 0;
+    input.btn-mini {
+      margin-bottom: 0;
+    }
+  }
+}

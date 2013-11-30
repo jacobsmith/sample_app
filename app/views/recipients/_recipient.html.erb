@@ -1,14 +1,17 @@
-<tr style="line-height: 14px;">
-  <td width="75">
-    <%= recipient.first_name %></td>
-    <td width="100">
-    <%= recipient.last_name %></td>
-    <td width="120" style="vertical-align:top">
-    <%= recipient.title %></td>
-     
+<tr>
+  <td>
+    <%= recipient.first_name %>
+  </td>
+  <td width="100">
+    <%= recipient.last_name %>
+  </td>
+  <td width="120">
+    <%= recipient.title %>
   </td>
 
-  <%[1,5,10,25,50].each do |value| %>
-  <td width = "60"> <%= button_to "$#{value}.00", line_items_path(recipient_id: recipient, quantity: value), remote: true, class: "btn-mini btn-primary" %> </td>
-  <%end%>
+  <% [1,5,10,25,50].each do |value| %>
+    <td width="60" class="button-container">
+      <%= button_to "$#{value}.00", line_items_path(recipient_id: recipient, quantity: value), remote: true, class: "btn-mini btn-primary" %>
+    </td>
+  <% end %>
 </tr>
