@@ -1,4 +1,6 @@
 class OrderNotifier < ActionMailer::Base
+  include ActionView::Helpers::NumberHelper
+
   default from: "admin@thanktheteacher.com"
 
   def received(order)
