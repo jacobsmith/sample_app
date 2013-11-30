@@ -22,7 +22,9 @@
     <h5> End Date: <%= @campaign.end_date %></h5>
     <h5> Created by: <%= @campaign.user.name %></h5>
     <body> <%= @campaign.description %></body>
-    <div class="alert" align="center">Super easy! Find your teacher, click an amount to gift, and make their day.<br>Gifting is usually tax deductible. Check with your accountant to be sure.<br>5% of the value of this order goes back to your school. <br>(This comes out of our pocket, not yours.)</div> 
+    <div class="alert" align="center">Super easy! Find your teacher, click an amount to gift, make their day.
+    <br>5% of the value of your order goes back to your school (from our pocket, not yours).
+    <br>Remember, gifting is usually tax deductible.</div> 
   </div>
   <%#= will_paginate %>
   <% if @recipients.any? %>
