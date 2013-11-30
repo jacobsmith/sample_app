@@ -26,21 +26,20 @@
     <br>5% of the value of your order goes back to your school (from our pocket, not yours).
     <br>Remember, gifting is usually tax deductible.</div> 
   </div>
-  <%#= will_paginate %>
+  
   <% if @recipients.any? %>
-    
-    <p class="recipients">
+    <%= will_paginate @recipients %> 
     <table class="table table-striped table-bordered">
       <tr>
-        <th align="right">Name</th>
-        <th align="left"></th>
+        <th align="right">First</th>
+        <th align="left">Last</th>
         <th align="left">Occupation</th>
         <th align="left">Gift</th>
       </tr>
       <%= render @recipients %>
     </table>
-    </p>
-    <%#= will_paginate %>
+  
+    <%= will_paginate @recipients %>
   <% else %>
     <br>
     <p>Add some <%= link_to 'recipients', new_recipient_path %> to your giftcard campaign!</p>
