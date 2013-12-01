@@ -70,7 +70,7 @@ User.create!(name: "Fishers High School Softball and Athletics",
              admin: true)
 
 Campaign.create!(title: "Holiday Gift Cards",
-	             description: "Here is a quick and easy way to order gift cards for FHS teachers, coaches, staff and bus drivers.",
+	             description: "Here is a quick and easy way to contribute to gift cards for FHS teachers, coaches, staff and bus drivers.",
 	             end_date: "2013-12-9", 
 	             user_id: "2"
                  )

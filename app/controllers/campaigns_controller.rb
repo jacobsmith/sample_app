@@ -19,7 +19,7 @@ class CampaignsController < ApplicationController
   def show
     @user = current_user
     @campaign = Campaign.find(params[:id])
-    @recipients = @campaign.recipients.order(sort_column + " " + sort_direction).paginate :per_page => 25, :page => params[:page]
+    @recipients = @campaign.recipients.order(sort_column + " " + sort_direction).paginate :per_page => 35, :page => params[:page]
   end
 
  def campaign_recipients
