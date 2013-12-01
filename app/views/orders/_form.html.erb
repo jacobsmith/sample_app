@@ -1,5 +1,5 @@
 <%= form_for(@order) do |f| %>
-  <div  class="payment-errors">&nbsp;</div>
+  <div  class="payment-errors span8 offset3">&nbsp;</div>
   <% if @order.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>

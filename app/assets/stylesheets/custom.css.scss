@@ -117,7 +117,9 @@ input {
   @extend .error;
 }
 
-
+.payment-errors {
+  color: #f00;
+}
 
 /* footer */
 
