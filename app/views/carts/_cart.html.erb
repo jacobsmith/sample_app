@@ -1,23 +1,17 @@
 <% unless cart.line_items.empty? %>
-
-<h4> Your Cart </h4>
-
- <table class="table table-bordered table-condensed">
- <%= render(@cart.line_items) %>
-
-  <tr>
-    <td><strong>Total</strong></td>
-    <td>
-      <div class="text-right" >
-        <strong><%= (number_to_currency@cart.total_price) %></strong>
-      </div>
-     </td>
-    
-  </tr>
-</table>
+  <h4><i class="icon-shopping-cart"></i> Your Cart </h4> 
+  <table class="table table-bordered table-condensed">
+    <%= render(@cart.line_items) %>
+    <tr>
+      <td><strong>Total</strong></td>
+      <td>
+        <div class="text-right" >
+          <strong><%= (number_to_currency@cart.total_price) %></strong>
+        </div>
+      </td>
+    </tr>
+  </table>
   <%= button_to 'Checkout', new_order_path, method: :get, class: "btn-small btn-primary"  %>
   <%= button_to 'Empty cart', @cart, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-small btn-primary" %>
-
-<a href="https://www.positivessl.com" style="font-family: arial; font-size: 10px; color: #212121; text-decoration: none;"><img src="https://www.positivessl.com/images-new/PositiveSSL_tl_trans2.gif" alt="SSL Certificate" title="SSL Certificate" border="0" /></a>
-
 <% end %>
+
